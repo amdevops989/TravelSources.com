@@ -1,44 +1,26 @@
-output "cluster_id" {
-  description = "EKS Cluster ID"
-  value       = module.eks.cluster_id
-}
-
-output "cluster_arn" {
-  description = "EKS Cluster ARN"
-  value       = module.eks.cluster_arn
+# ------------------------------------------------------------
+# 📤 Outputs
+# ------------------------------------------------------------
+output "cluster_name" {
+  value = aws_eks_cluster.this.name
 }
 
 output "cluster_endpoint" {
-  description = "EKS Cluster endpoint"
-  value       = module.eks.cluster_endpoint
+  value = aws_eks_cluster.this.endpoint
 }
 
-output "cluster_security_group_id" {
-  description = "Cluster SG ID"
-  value       = module.eks.cluster_security_group_id
-}
-
-output "node_group_arn" {
-  description = "Demo node group ARN"
-  value       = module.eks.node_groups["demo_nodes"].arn
-}
-
-output "node_group_name" {
-  description = "Demo node group name"
-  value       = module.eks.node_groups["demo_nodes"].id
+output "cluster_ca_certificate" {
+  value = aws_eks_cluster.this.certificate_authority[0].data
 }
 
 output "oidc_provider_arn" {
-  description = "OIDC provider ARN for IRSA"
-  value       = module.eks.oidc_provider_arn
+  value = aws_iam_openid_connect_provider.oidc.arn
 }
 
 output "oidc_provider_url" {
-  description = "OIDC provider URL for IRSA"
-  value       = module.eks.oidc_provider_url
+  value = data.aws_eks_cluster.cluster.identity[0].oidc[0].issuer
 }
 
-output "storageclass_name" {
-  description = "Name of KMS-encrypted PVC StorageClass"
-  value       = kubernetes_storage_class.gp3_encrypted.metadata[0].name
+output "node_group_name" {
+  value = aws_eks_node_group.default.node_group_name
 }

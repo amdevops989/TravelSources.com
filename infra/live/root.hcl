@@ -34,4 +34,5 @@ remote_state {
 inputs = {
   project_name = local.project_name
   aws_region   = local.aws_region
+  aws_profile  = local.aws_profile
 }

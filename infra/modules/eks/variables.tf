@@ -1,63 +1,37 @@
-variable "cluster_name" {
-  type = string
-}
-
-variable "region" {
-  type = string
-}
-
-variable "profile" {
-  type = string
-}
-
-variable "env" {
-  type    = string
-  default = "dev"
-}
-
-variable "tags" {
-  type    = map(string)
-  default = {}
-}
-
-variable "vpc_id" {
-  type = string
-}
-
+variable "cluster_name" {}
+variable "region" {}
+variable "profile" {}
+variable "env" {}
+variable "vpc_id" {}
 variable "private_subnets" {
   type = list(string)
 }
+variable "public_subnets" {
+  type = list(string)
+  default = []
+}
 
+variable "project_name" {
+  description = "Project name prefix for resources"
+  type        = string
+}
 variable "node_instance_type" {
-  type    = string
   default = "t3.small"
 }
-
 variable "node_desired_capacity" {
-  type    = number
   default = 1
 }
-
 variable "node_min_capacity" {
-  type    = number
   default = 1
 }
-
 variable "node_max_capacity" {
-  type    = number
   default = 2
 }
-
 variable "ssh_key_name" {
-  type    = string
   default = ""
 }
-
-variable "k8s_version" {
-  type    = string
-  default = "1.28"
-}
-
-variable "kms_key_id" {
-  type = string
+variable "kms_key_id" {}
+variable "tags" {
+  type    = map(string)
+  default = {}
 }

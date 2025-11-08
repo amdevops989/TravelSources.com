@@ -38,6 +38,8 @@ resource "aws_subnet" "public" {
   tags = merge(local.common_tags, {
     Name = "${var.project_name}-${var.env}-public-${count.index + 1}"
     Tier = "public"
+    "kubernetes.io/role/elb"     = "1"
+    "kubernetes.io/cluster/${var.project_name}-${var.env}" = "shared"
   })
 }
 
@@ -50,6 +52,8 @@ resource "aws_subnet" "private" {
   tags = merge(local.common_tags, {
     Name = "${var.project_name}-${var.env}-private-${count.index + 1}"
     Tier = "private"
+    "kubernetes.io/role/internal-elb"    = "1"
+    "kubernetes.io/cluster/${var.project_name}-${var.env}" = "shared"
   })
 }
 
