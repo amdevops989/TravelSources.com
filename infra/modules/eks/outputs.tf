@@ -24,3 +24,8 @@ output "oidc_provider_url" {
 output "node_group_name" {
   value = aws_eks_node_group.default.node_group_name
 }
+output "cluster_token" {
+  description = "Authentication token used by Kubernetes provider"
+  value       = data.aws_eks_cluster_auth.cluster.token
+  sensitive   = true
+}

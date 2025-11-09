@@ -1,7 +1,7 @@
 locals {
   aws_region   = "us-east-1"
   aws_profile  = "devops-am"
-  project_name = "travelsources"
+  project_name = "travelersources"
 }
 
 # === AWS Provider ===
@@ -15,6 +15,8 @@ provider "aws" {
 }
 EOF
 }
+
+
 
 # === Remote Backend (S3 + DynamoDB) ===
 remote_state {

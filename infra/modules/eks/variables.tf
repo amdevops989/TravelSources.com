@@ -35,3 +35,29 @@ variable "tags" {
   type    = map(string)
   default = {}
 }
+
+
+# -----------------------------
+# Variables
+# -----------------------------
+variable "admin_roles" {
+  description = "List of AWS IAM role ARNs for SSO admins"
+  type        = list(string)
+  default     = [
+    "arn:aws:iam::272495906318:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AdministratorAccess_ad80597e4fb78530"
+  ]
+}
+
+variable "developer_roles" {
+  description = "List of AWS IAM role ARNs for SSO developers"
+  type        = list(string)
+  default = [
+    "arn:aws:iam::272495906318:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_Developers_3bffcc1f1b28d3b2"
+  ]
+}
+
+# variable "env" {
+#   description = "Environment name, used for developer RBAC group"
+#   type        = string
+#   default     = "dev"
+# }
