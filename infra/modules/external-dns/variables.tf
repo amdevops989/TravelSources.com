@@ -60,3 +60,8 @@ variable "k8s_ca" {
 variable "k8s_token" {
   type = string
 }
+
+
+variable "profile" {
+  type = string
+}

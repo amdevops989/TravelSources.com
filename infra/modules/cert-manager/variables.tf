@@ -42,3 +42,4 @@ variable "oidc_provider_arn" {
   type        = string
   description = "IAM Role ARN for cert-manager service account"
 }
+

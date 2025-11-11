@@ -34,6 +34,7 @@ inputs = {
   service_account_name = "external-dns-sa"
   domain_filters       = ["travelersources.com"]
   zone_type            = "public"
-  hosted_zone_id       = "Z008769157NMLOMHGADU"
+  hosted_zone_id       = "Z04809491IVLF6Q0FMAGF"
   helm_chart_version   = "1.19.0"
+  profile              = include.root.locals.aws_profile
 }

@@ -37,10 +37,10 @@ inputs = {
   vpc_id               = dependency.vpc.outputs.vpc_id
   private_subnets      = dependency.vpc.outputs.private_subnets
 
-  node_instance_type   = "t3.small"    # cost-effective
+  node_instance_type   = "t3.large"    # spot mode for dev and test
   node_desired_capacity = 1
   node_min_capacity     = 1
-  node_max_capacity     = 2
+  node_max_capacity     = 1
   ssh_key_name          = ""
   kms_key_id            = "arn:aws:kms:us-east-1:272495906318:key/54e3bb98-a1ee-4d8f-86cb-308fbbfc56c9"
 

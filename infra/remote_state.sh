@@ -1,5 +1,6 @@
 aws s3 mb s3://travelersources-tfstate --region us-east-1 --profile devops-am
 
+
 aws dynamodb create-table \
   --table-name travelersources-tf-locks \
   --attribute-definitions AttributeName=LockID,AttributeType=S \
@@ -8,6 +9,11 @@ aws dynamodb create-table \
   --region us-east-1 \
   --profile devops-am
 
+
+## hashing password : 
+# install if needed (Debian/Ubuntu)
+sudo apt-get install -y apache2-utils
+htpasswd -nbBC 10 admin 'admin1233' | cut -d: -f2  
 
 ## remove remote state
 
@@ -21,6 +27,8 @@ aws dynamodb delete-item \
 aws eks update-kubeconfig --name travelersources-dev --region us-east-1 --profile devops-am
 
 
+## to unlock terr lock
+terragrunt force-unlock 092da35b-cfef-8030-bc23-cf2a5422ba32
 
 ##     Why this happens
 
