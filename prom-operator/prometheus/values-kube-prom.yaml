@@ -1,0 +1,39 @@
+# minimal values to allow external ServiceMonitors/PodMonitors to be scraped
+prometheus:
+  prometheusSpec:
+    # set the selectors to accept external ServiceMonitor/PodMonitor resources
+    serviceMonitorSelector:
+      matchLabels:
+        prometheus: main
+    podMonitorSelector:
+      matchLabels:
+        prometheus: main
+    podMonitorNamespaceSelector:
+      matchLabels:
+        monitoring: prometheus
+    serviceMonitorNamespaceSelector:
+      matchLabels:
+        monitoring: prometheus
+    # local storage for minikube (use emptyDir for demo or configure PVC)
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 20Gi
+
+grafana:
+  adminUser: admin
+  adminPassword: admin            # change for anything other than local demo
+  service:
+    type: NodePort                # convenient for minikube demo
+    nodePort: 30080
+
+alertmanager:
+  enabled: true
+
+kubeStateMetrics:
+  enabled: true
+nodeExporter:
+  enabled: true
